@@ -3,7 +3,12 @@ REM = 0; /*
 cls
 title %~f0
 cd %~dp0
-call cscript.exe "%~f0" //Nologo //E:JScript "%~f0" %*
+if "%PROCESSOR_ARCHITECTURE%" EQU "x86" (
+  call cscript.exe "%~f0" //Nologo //E:JScript "%~f0" %*
+)
+if "%PROCESSOR_ARCHITECTURE%" NEQ "x86" (
+  call C:\Windows\SysWOW64\CScript.exe "%~f0" //Nologo //E:JScript "%~f0" %*
+)
 goto LBL_END
 */
 var document = new ActiveXObject('htmlfile');
