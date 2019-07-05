@@ -352,7 +352,7 @@ function replImport(token, tokens, index) {
   return true;
 }
 
-export function transform(code) {
+export function transpile(code) {
   let tokens = getTokens(code),
     token,
     source;

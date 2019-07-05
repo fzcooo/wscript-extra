@@ -19,7 +19,7 @@ import * as wmi from './lib/wmi';
 import * as chain from './lib/chain';
 import * as dayjs from './lib/dayjs';
 import { isfile } from './lib/fso';
-import { transform } from './lib/transpile';
+import { transpile } from './rollup-plugin-build-bat';
 
 const InternalModules = {
   accdb: accdb,
@@ -62,7 +62,7 @@ if (process.argv.length === 3) {
   let src = fs.readFileSync(pth, 'UTF-8');
   this.__filename = pth;
   this.__dirname = Path.dirname(pth);
-  src = transform(src);
+  src = transpile(src);
   let script = document.createElement('script');
   script.text = src;
   document.head.appendChild(script);

@@ -1,4 +1,4 @@
-import transpile from './lib/transpile';
+import bb from './rollup-plugin-build-bat';
 import { uglify } from 'rollup-plugin-uglify';
 
 let config = {
@@ -7,14 +7,12 @@ let config = {
   output: {
     file: './runtime.bat',
     format: 'iife',
-    sourceMap: false/*,
+    sourceMap: false /*,
     intro: 'var __START_PROCESS = new Date;',
     outro: `print(Array(81).join('='));print('Process time:', new Date-__START_PROCESS, 'ms');`
     */
   },
-  plugins: [
-    transpile()
-  ]
+  plugins: [bb()]
 };
 
 if (process.env.ROLLUP_INPUT) {

@@ -1,27 +1,27 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "node": true,
-        "es6": true
-    },
-    "extends": "eslint:recommended",
-    "globals": {
-        "REM": "writable",
-        "WScript": "readonly",
-        "ActiveXObject": "readonly",
-        "GetObject": "readonly",
-        "VBArray": "readonly",
-        "Enumerator": "readonly",
-        "GetShell": "readonly",
-        "GetVBScript": "readonly",
-        "GetShellApp": "readonly",
-        "GetFSO": "readonly"
-    },
-    "parserOptions": {
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
-    "rules": {
-        "no-console": 'off'
-    }
+  env: {
+    browser: true,
+    node: true,
+    es6: true
+  },
+  extends: 'plugin:prettier/recommended',
+  globals: {
+    REM: 'writable',
+    WScript: 'readonly',
+    ActiveXObject: 'readonly',
+    GetObject: 'readonly',
+    VBArray: 'readonly',
+    Enumerator: 'readonly',
+    __WShell: 'readonly',
+    __VBS: 'readonly',
+    __ShellApp: 'readonly',
+    __FSO: 'readonly'
+  },
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: 'module'
+  },
+  rules: {
+    'no-console': 'off'
+  }
 };
