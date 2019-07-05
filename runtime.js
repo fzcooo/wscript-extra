@@ -19,7 +19,7 @@ import * as wmi from './lib/wmi';
 import * as chain from './lib/chain';
 import * as dayjs from './lib/dayjs';
 import { isfile } from './lib/fso';
-import { transpile } from './rollup-plugin-build-bat';
+import transpile from './lib/transpile';
 
 const InternalModules = {
   accdb: accdb,
