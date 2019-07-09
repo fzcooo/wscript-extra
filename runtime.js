@@ -22,26 +22,26 @@ import { isfile } from './lib/fso';
 import transpile from './lib/transpile';
 
 const InternalModules = {
-  accdb: accdb,
-  adodb: adodb,
-  child_process: child_process,
-  crypto: crypto,
-  csv: csv,
-  csvdb: csvdb,
-  dayjs: dayjs,
-  excel: excel,
-  exceldb: exceldb,
-  fs: fs,
-  http: http,
-  ie: ie,
-  oracledb: oracledb,
-  outlook: outlook,
+  accdb,
+  adodb,
+  child_process,
+  crypto,
+  csv,
+  csvdb,
+  dayjs,
+  excel,
+  exceldb,
+  fs,
+  http,
+  ie,
+  oracledb,
+  outlook,
   path: Path,
-  querystring: querystring,
-  tool: tool,
-  chain: chain,
-  util: util,
-  wmi: wmi
+  querystring,
+  tool,
+  chain,
+  util,
+  wmi
 };
 
 window.require = function(name) {
@@ -60,8 +60,15 @@ if (process.argv.length === 3) {
     throw new Error("Cannot load file '" + pth + "'");
   }
   let src = fs.readFileSync(pth, 'UTF-8');
-  this.__filename = pth;
-  this.__dirname = Path.dirname(pth);
+
+  Object.assign(this, {
+    __filename: pth,
+    __dirname: Path.dirname(pth),
+    process,
+    Buffer,
+    console
+  });
+
   src = transpile(src);
   let script = document.createElement('script');
   script.text = src;
