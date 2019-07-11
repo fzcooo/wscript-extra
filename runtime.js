@@ -16,8 +16,8 @@ import * as csvdb from './lib/csvdb';
 import * as exceldb from './lib/exceldb';
 import * as oracledb from './lib/oracledb';
 import * as wmi from './lib/wmi';
-import * as chain from './lib/chain';
 import * as dayjs from './lib/dayjs';
+import * as pipe from './lib/pipe';
 import { isfile } from './lib/fso';
 import transpile from './lib/transpile';
 
@@ -39,9 +39,9 @@ const InternalModules = {
   path: Path,
   querystring,
   tool,
-  chain,
   util,
-  wmi
+  wmi,
+  pipe
 };
 
 window.require = function(name) {
