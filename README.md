@@ -1,9 +1,5 @@
 # wscript-extra
 
-- javascript(IE11) + wscript
+wscript + javascript(IE11) + buble
 
-- ES Modules
-
-- arrow functions
-
-- ActiveXObject
+es2015 => es5

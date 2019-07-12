@@ -4,7 +4,7 @@ module.exports = {
     node: true,
     es6: true
   },
-  extends: 'plugin:prettier/recommended',
+  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
   globals: {
     REM: 'writable',
     WScript: 'readonly',
@@ -22,6 +22,7 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    'no-console': 'off'
+    'no-console': 'off',
+    'prettier/prettier': ['error', { singleQuote: true }]
   }
 };
