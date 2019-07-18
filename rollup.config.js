@@ -1,3 +1,5 @@
+import nodeResolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
 import bat from './rollup-plugin-bat';
 import bubel from 'rollup-plugin-buble';
 import inject from 'rollup-plugin-inject';
@@ -9,13 +11,17 @@ let config = {
   input: './runtime.js',
   context: 'window',
   output: {
-    file: './runtime.bat',
+    file: './dist/runtime.bat',
     format: 'iife',
     sourceMap: false
   },
   plugins: [
+    nodeResolve(),
+    commonjs({
+      include: 'node_modules/**',
+      sourceMap: false
+    }),
     bat(),
-
     inject({
       include: '**/*.js',
       exclude: 'node_modules/**',
@@ -25,7 +31,6 @@ let config = {
         console: resolve_path('lib/console')
       }
     }),
-
     bubel({
       target: {
         ie: 11
@@ -36,9 +41,8 @@ let config = {
         dangerousForOf: true
       }
     }),
-
     progress({
-      clearLine: false
+      clearLine: true
     })
   ]
 };
@@ -49,7 +53,7 @@ if (process.env.ROLLUP_INPUT) {
   config.output.file = input.replace(/[.]js$/, '.bat');
 }
 
-if (process.env.ROLLUP_MINI) {
+if (process.env.ROLLUP_MIN) {
   config.plugins.push(uglify());
 }
 

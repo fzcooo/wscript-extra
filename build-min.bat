@@ -8,7 +8,7 @@ if not defined num goto end
 if not %~x1 == .js goto end
 
 set ROLLUP_INPUT=%~f1
-set ROLLUP_MINI=true
+set ROLLUP_MIN=true
 
 call npm run build
 

@@ -1,9 +1,11 @@
+import { isfile } from './lib/fso';
+import transpile from './lib/transpile';
 import * as tool from './lib/tool';
 import * as util from './lib/util';
 import * as Path from './lib/path';
 import * as fs from './lib/fs';
 import * as child_process from './lib/child_process';
-import * as querystring from './lib/querystring';
+import qs from 'qs';
 import * as http from './lib/http';
 import * as crypto from './lib/crypto';
 import * as csv from './lib/csv';
@@ -16,10 +18,8 @@ import * as csvdb from './lib/csvdb';
 import * as exceldb from './lib/exceldb';
 import * as oracledb from './lib/oracledb';
 import * as wmi from './lib/wmi';
-import * as dayjs from './lib/dayjs';
+import dayjs from 'dayjs';
 import * as pipe from './lib/pipe';
-import { isfile } from './lib/fso';
-import transpile from './lib/transpile';
 
 const InternalModules = {
   accdb,
@@ -28,7 +28,7 @@ const InternalModules = {
   crypto,
   csv,
   csvdb,
-  dayjs,
+  dayjs: { default: dayjs },
   excel,
   exceldb,
   fs,
@@ -37,7 +37,7 @@ const InternalModules = {
   oracledb,
   outlook,
   path: Path,
-  querystring,
+  qs: { default: qs },
   tool,
   util,
   wmi,

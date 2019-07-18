@@ -18,7 +18,6 @@ document.write(
 var window = document.parentWindow;
 window.WScript = WScript;
 window.ActiveXObject = ActiveXObject;
-window.GetObject = GetObject;
 
 var src = '{{source}}';
 src = window.decodeURIComponent(window.escape(window.atob(src)));
