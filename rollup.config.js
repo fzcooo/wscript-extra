@@ -4,8 +4,10 @@ import bat from './rollup-plugin-bat';
 import buble from 'rollup-plugin-buble';
 import inject from 'rollup-plugin-inject';
 import progress from 'rollup-plugin-progress';
+import includePaths from 'rollup-plugin-includepaths';
 import { uglify } from 'rollup-plugin-uglify';
-import { resolve as resolve_path } from 'path';
+import { copyFileSync } from 'fs';
+import { resolve as resolvePath } from 'path';
 
 let config = {
   input: './runtime.js',
@@ -16,6 +18,11 @@ let config = {
     sourceMap: false
   },
   plugins: [
+    includePaths({
+      paths: ['./lib'],
+      extensions: ['.js'],
+      external: []
+    }),
     nodeResolve(),
     commonjs({
       include: 'node_modules/**',
@@ -26,9 +33,9 @@ let config = {
       include: '**/*.js',
       exclude: 'node_modules/**',
       modules: {
-        process: resolve_path('lib/process'),
-        Buffer: resolve_path('lib/buffer'),
-        console: resolve_path('lib/console')
+        process: resolvePath('lib/process'),
+        Buffer: resolvePath('lib/buffer'),
+        console: resolvePath('lib/console')
       }
     }),
     buble({
@@ -50,7 +57,14 @@ let config = {
 
 if (process.env.ROLLUP_INPUT) {
   let input = process.env.ROLLUP_INPUT;
-  config.input = input;
+  let tmpFile = resolvePath(
+    Math.random()
+      .toString(16)
+      .slice(2) + '.js'
+  );
+  copyFileSync(input, tmpFile);
+  process.env.ROLLUP_INPUT_TMP = tmpFile;
+  config.input = tmpFile;
   config.output.file = input.replace(/[.]js$/, '.bat');
 }
 
