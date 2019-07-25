@@ -1,7 +1,7 @@
 import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import bat from './rollup-plugin-bat';
-import bubel from 'rollup-plugin-buble';
+import buble from 'rollup-plugin-buble';
 import inject from 'rollup-plugin-inject';
 import progress from 'rollup-plugin-progress';
 import { uglify } from 'rollup-plugin-uglify';
@@ -31,10 +31,11 @@ let config = {
         console: resolve_path('lib/console')
       }
     }),
-    bubel({
+    buble({
       target: {
         ie: 11
       },
+      exclude: 'node_modules/**',
       transforms: {
         arrow: true,
         modules: false,
