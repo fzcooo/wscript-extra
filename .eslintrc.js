@@ -8,6 +8,7 @@ module.exports = {
   globals: {
     REM: 'writable',
     WScript: 'readonly',
+    GetObject: 'readonly',
     ActiveXObject: 'readonly',
     VBArray: 'readonly',
     Enumerator: 'readonly',

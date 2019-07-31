@@ -17,6 +17,7 @@ document.write(
 );
 var window = document.parentWindow;
 window.WScript = WScript;
+window.GetObject = GetObject;
 window.ActiveXObject = ActiveXObject;
 
 var src = '{{source}}';
