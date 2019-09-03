@@ -20,6 +20,7 @@ import * as oracledb from './lib/oracledb';
 import * as wmi from './lib/wmi';
 import dayjs from 'dayjs';
 import * as pipe from './lib/pipe';
+import * as prettyprint from './lib/prettyprint';
 
 const InternalModules = {
   accdb,
@@ -41,7 +42,8 @@ const InternalModules = {
   tool,
   util,
   wmi,
-  pipe
+  pipe,
+  prettyprint
 };
 
 window.require = function(name) {
