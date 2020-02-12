@@ -19,7 +19,7 @@ import * as exceldb from './lib/exceldb';
 import * as oracledb from './lib/oracledb';
 import * as wmi from './lib/wmi';
 import dayjs from 'dayjs';
-import * as pipe from './lib/pipe';
+import * as pprint from './lib/pprint';
 
 const InternalModules = {
   accdb,
@@ -41,7 +41,7 @@ const InternalModules = {
   tool,
   util,
   wmi,
-  pipe
+  pprint
 };
 
 window.require = function(name) {
