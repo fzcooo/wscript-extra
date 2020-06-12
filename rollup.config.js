@@ -15,7 +15,7 @@ let config = {
   output: {
     file: './dist/runtime.bat',
     format: 'iife',
-    sourceMap: false
+    sourcemap: false
   },
   plugins: [
     includePaths({
