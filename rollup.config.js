@@ -58,9 +58,7 @@ let config = {
 if (process.env.ROLLUP_INPUT) {
   let input = process.env.ROLLUP_INPUT;
   let tmpFile = resolvePath(
-    Math.random()
-      .toString(16)
-      .slice(2) + '.js'
+    Math.random().toString(16).slice(2) + Date.now() + '.js'
   );
   copyFileSync(input, tmpFile);
   process.env.ROLLUP_INPUT_TMP = tmpFile;
