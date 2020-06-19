@@ -25,7 +25,7 @@ src = window.decodeURIComponent(window.escape(window.atob(src)));
 
 var script = document.createElement('script');
 script.text = src;
-window.addEventListener('error', function(e) {
+window.addEventListener('error', function (e) {
   if (e.error) {
     WScript.Echo(e.error.stack);
   } else {
@@ -35,6 +35,23 @@ window.addEventListener('error', function(e) {
   }
 });
 document.head.appendChild(script);
+
+var startTime = new Date().getTime();
+function hasTimer() {
+  if (!window.__timers) return false;
+  for (var _i in window.__timers) {
+    return true;
+  }
+  return false;
+}
+while (hasTimer()) {
+  WScript.Sleep(200);
+  if (new Date().getTime() - startTime > 15000) {
+    WScript.Echo('Time Out');
+    break;
+  }
+}
+
 /*
 :LBL_END
 pause
