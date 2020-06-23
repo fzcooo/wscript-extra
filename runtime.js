@@ -41,10 +41,10 @@ const InternalModules = {
   tool,
   util,
   wmi,
-  pprint
+  pprint,
 };
 
-window.require = function(name) {
+window.require = function (name) {
   return InternalModules[name];
 };
 
@@ -66,7 +66,7 @@ if (process.argv.length === 3) {
     __dirname: Path.dirname(pth),
     process,
     Buffer,
-    console
+    console,
   });
 
   src = transpile(src);

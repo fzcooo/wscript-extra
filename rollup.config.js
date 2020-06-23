@@ -33,9 +33,9 @@ let config = {
       include: '**/*.js',
       exclude: 'node_modules/**',
       modules: {
-        process: resolvePath('lib/process'),
-        Buffer: resolvePath('lib/buffer'),
-        console: resolvePath('lib/console'),
+        process: 'lib/process',
+        Buffer: ['node_modules/buffer', 'Buffer'],
+        console: 'lib/console',
       },
     }),
     buble({
