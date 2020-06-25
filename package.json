@@ -1,7 +1,7 @@
 {
   "name": "wscript-extra",
   "version": "1.0.0",
-  "description": "",
+  "description": "write javascript code like nodejs without install nodejs on windows",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,7 @@
     "eslint-init": "node ./node_modules/eslint/bin/eslint --init"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "core-js": "^3.1.4",
     "dayjs": "^1.8.15",
@@ -18,12 +18,12 @@
     "qs": "^6.7.0"
   },
   "devDependencies": {
-    "eslint": "^6.1.0",
+    "eslint": "^7.2.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "fs-extra": "^8.1.0",
-    "prettier": "^1.18.2",
-    "rollup": "^1.17.0",
+    "fs-extra": "^9.0.1",
+    "prettier": "^2.0.5",
+    "rollup": "^2.15.0",
     "rollup-plugin-buble": "^0.19.8",
     "rollup-plugin-commonjs": "^10.0.1",
     "rollup-plugin-includepaths": "^0.2.3",
@@ -31,5 +31,9 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-progress": "^1.1.1",
     "rollup-plugin-uglify": "^6.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fzcooo/wscript-extra"
   }
 }

@@ -7,7 +7,7 @@ import progress from 'rollup-plugin-progress';
 import includePaths from 'rollup-plugin-includepaths';
 import { uglify } from 'rollup-plugin-uglify';
 import { copyFileSync } from 'fs';
-import { resolve as resolvePath } from 'path';
+import { dirname, resolve as resolvePath } from 'path';
 
 let config = {
   input: './runtime.js',
@@ -15,18 +15,18 @@ let config = {
   output: {
     file: './dist/runtime.bat',
     format: 'iife',
-    sourceMap: false
+    sourcemap: false,
   },
   plugins: [
     includePaths({
       paths: ['./lib'],
       extensions: ['.js'],
-      external: []
+      external: [],
     }),
     nodeResolve(),
     commonjs({
       include: 'node_modules/**',
-      sourceMap: false
+      sourceMap: false,
     }),
     bat(),
     inject({
@@ -35,32 +35,31 @@ let config = {
       modules: {
         process: resolvePath('lib/process'),
         Buffer: resolvePath('lib/buffer'),
-        console: resolvePath('lib/console')
-      }
+        console: resolvePath('lib/console'),
+      },
     }),
     buble({
       target: {
-        ie: 11
+        ie: 11,
       },
       exclude: 'node_modules/**',
       transforms: {
         arrow: true,
         modules: false,
-        dangerousForOf: true
-      }
+        dangerousForOf: true,
+      },
     }),
     progress({
-      clearLine: true
-    })
-  ]
+      clearLine: true,
+    }),
+  ],
 };
 
 if (process.env.ROLLUP_INPUT) {
   let input = process.env.ROLLUP_INPUT;
   let tmpFile = resolvePath(
-    Math.random()
-      .toString(16)
-      .slice(2) + '.js'
+    dirname(input),
+    Math.random().toString(16).slice(2) + Date.now() + '.js'
   );
   copyFileSync(input, tmpFile);
   process.env.ROLLUP_INPUT_TMP = tmpFile;
