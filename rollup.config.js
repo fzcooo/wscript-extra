@@ -2,7 +2,6 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import bat from './rollup-plugin-bat';
 import buble from 'rollup-plugin-buble';
-import inject from 'rollup-plugin-inject';
 import progress from 'rollup-plugin-progress';
 import includePaths from 'rollup-plugin-includepaths';
 import { uglify } from 'rollup-plugin-uglify';
@@ -29,15 +28,6 @@ let config = {
       sourceMap: false,
     }),
     bat(),
-    inject({
-      include: '**/*.js',
-      exclude: 'node_modules/**',
-      modules: {
-        process: 'lib/process',
-        Buffer: ['node_modules/buffer', 'Buffer'],
-        console: 'lib/console',
-      },
-    }),
     buble({
       target: {
         ie: 11,
@@ -48,6 +38,7 @@ let config = {
         modules: false,
         dangerousForOf: true,
       },
+      objectAssign: 'Object.assign'
     }),
     progress({
       clearLine: true,
