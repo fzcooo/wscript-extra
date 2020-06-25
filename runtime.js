@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { isfile } from './lib/fso';
 import transpile from './lib/transpile';
 import * as tool from './lib/tool';
@@ -5,7 +6,6 @@ import * as util from './lib/util';
 import * as Path from './lib/path';
 import * as fs from './lib/fs';
 import * as child_process from './lib/child_process';
-import qs from 'qs';
 import * as http from './lib/http';
 import * as crypto from './lib/crypto';
 import * as csv from './lib/csv';
@@ -18,7 +18,6 @@ import * as csvdb from './lib/csvdb';
 import * as exceldb from './lib/exceldb';
 import * as oracledb from './lib/oracledb';
 import * as wmi from './lib/wmi';
-import dayjs from 'dayjs';
 import * as pprint from './lib/pprint';
 
 const InternalModules = {
@@ -37,14 +36,13 @@ const InternalModules = {
   oracledb,
   outlook,
   path: Path,
-  qs: { default: qs },
   tool,
   util,
   wmi,
-  pprint
+  pprint,
 };
 
-window.require = function(name) {
+window.require = function (name) {
   return InternalModules[name];
 };
 
@@ -66,7 +64,7 @@ if (process.argv.length === 3) {
     __dirname: Path.dirname(pth),
     process,
     Buffer,
-    console
+    console,
   });
 
   src = transpile(src);

@@ -14,8 +14,11 @@ export default function() {
     async load(id) {
       if (id == entry) {
         let source = await readFile(id, 'utf-8');
-        let polyfill = resolve('lib/polyfill').replace(/\\/g, '/');
-        return `import '${polyfill}';\r\n` + source;
+        let imports = ['polyfill', 'builtins'].map(name => {
+          let pth = resolve('lib/' + name).replace(/\\/g, '/');
+          return `import '${pth}';\r\n`;
+        });
+        return imports.join('') + source;
       }
       return null;
     },
