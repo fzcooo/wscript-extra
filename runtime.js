@@ -1,4 +1,7 @@
 import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import toArray from 'dayjs/plugin/toArray';
 import { isfile } from './lib/fso';
 import transpile from './lib/transpile';
 import * as tool from './lib/tool';
@@ -19,6 +22,10 @@ import * as pprint from './lib/pprint';
 // import * as exceldb from './lib/exceldb';
 // import * as oracledb from './lib/oracledb';
 // import * as wmi from './lib/wmi';
+
+dayjs.extend(duration);
+dayjs.extend(relativeTime);
+dayjs.extend(toArray);
 
 const InternalModules = {
   dayjs: { default: dayjs },
