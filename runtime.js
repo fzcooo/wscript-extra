@@ -2,44 +2,44 @@ import dayjs from 'dayjs';
 import { isfile } from './lib/fso';
 import transpile from './lib/transpile';
 import * as tool from './lib/tool';
-import * as util from './lib/util';
 import * as Path from './lib/path';
 import * as fs from './lib/fs';
-import * as child_process from './lib/child_process';
-import * as http from './lib/http';
-import * as crypto from './lib/crypto';
 import * as csv from './lib/csv';
 import * as excel from './lib/excel';
-import * as ie from './lib/ie';
-import * as outlook from './lib/outlook';
-import * as accdb from './lib/accdb';
-import * as adodb from './lib/adodb';
-import * as csvdb from './lib/csvdb';
-import * as exceldb from './lib/exceldb';
-import * as oracledb from './lib/oracledb';
-import * as wmi from './lib/wmi';
 import * as pprint from './lib/pprint';
+// import * as util from './lib/util';
+// import * as crypto from './lib/crypto';
+// import * as child_process from './lib/child_process';
+// import * as http from './lib/http';
+// import * as ie from './lib/ie';
+// import * as outlook from './lib/outlook';
+// import * as accdb from './lib/accdb';
+// import * as adodb from './lib/adodb';
+// import * as csvdb from './lib/csvdb';
+// import * as exceldb from './lib/exceldb';
+// import * as oracledb from './lib/oracledb';
+// import * as wmi from './lib/wmi';
 
 const InternalModules = {
-  accdb,
-  adodb,
-  child_process,
-  crypto,
-  csv,
-  csvdb,
   dayjs: { default: dayjs },
+  csv,
   excel,
-  exceldb,
-  fs,
-  http,
-  ie,
-  oracledb,
-  outlook,
+  fs, 
   path: Path,
   tool,
-  util,
-  wmi,
   pprint,
+  // util,
+  // crypto,
+  // child_process,
+  // http,
+  // ie,
+  // outlook,
+  // accdb,
+  // adodb,
+  // csvdb,
+  // exceldb,
+  // oracledb,
+  // wmi,
 };
 
 window.require = function (name) {
@@ -63,8 +63,8 @@ if (process.argv.length === 3) {
     __filename: pth,
     __dirname: Path.dirname(pth),
     process,
-    Buffer,
     console,
+    Buffer,
   });
 
   src = transpile(src);
